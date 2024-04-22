@@ -98,11 +98,11 @@ FROM
 	(
 		SELECT 
 			continent, 
-			MAX(death_rate) AS max_death_rate,
-			MIN(death_rate) AS min_death_rate,
-			MAX(infection_rate) AS max_infection_rate,
+            COUNT(DISTINCT location) AS country_count,
 			MIN(infection_rate) AS min_infection_rate,
-            COUNT(DISTINCT location) AS country_count
+			MAX(infection_rate) AS max_infection_rate,
+            MIN(death_rate) AS min_death_rate,
+			MAX(death_rate) AS max_death_rate         
 		FROM 
 			infection_death_rate
 		GROUP BY 

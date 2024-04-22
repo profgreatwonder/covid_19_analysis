@@ -1,21 +1,3 @@
--- PROBLEM STATEMENT: UNDERSTANDING COVID-19 AND ITS PREVAILING FACTORS BETWEEN 2020 TO 2024
-	-- trying to understand the prevailing factors affecting covid for between 2020 - 2024 for different countries and continents
--- QUESTIONS
-	-- What continent experienced the most deaths
-    -- What country experienced the most death
-    -- How did the following factors affect COVID
-		-- age, population, 
-        
--- dataset description
-	-- 
-	-- data was downloaded, database redesigned (write a note on this)
--- project todo
--- software and tools
--- links
--- observations
--- recommendations
--- challenges
-
 -- 1: choose the database
 use covid_19_db;
 
