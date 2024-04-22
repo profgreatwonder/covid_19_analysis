@@ -2,17 +2,17 @@
 
 ## Documentation Table of Contents
 
-- Problem Statement
-- Project Goal
-- Project and Dataset Description
-- Links to Files and Visualization
-- Project Todos
-- Software and Tools
-- Queries Used
-- Views Produced from Queries For Visualization
-- Observations
-- Challenges
-- Recommendations
+- [Problem Statement](https://github.com/profgreatwonder/covid_19_analysis/blob/master/README.md#problem-statement)
+- [Project Goal](https://github.com/profgreatwonder/covid_19_analysis/blob/master/README.md#project-goal)
+- [Project and Dataset Description](https://github.com/profgreatwonder/covid_19_analysis/blob/master/README.md#project-and-dataset-description)
+- [Links to Files and Visualization](https://github.com/profgreatwonder/covid_19_analysis/blob/master/README.md#links-to-files-and-visualization)
+- [Project Todos](https://github.com/profgreatwonder/covid_19_analysis/blob/master/README.md#project-todos)
+- [Software and Tools Used](https://github.com/profgreatwonder/covid_19_analysis/blob/master/README.md#software-and-tools)
+- [Queries Used](https://github.com/profgreatwonder/covid_19_analysis/blob/master/README.md#queries-used)
+- [Views Produced from Queries For Visualization](https://github.com/profgreatwonder/covid_19_analysis/blob/master/README.md#views-produced-from-queries-for-visualization)
+- [Observations](https://github.com/profgreatwonder/covid_19_analysis/blob/master/README.md#observations)
+- [Challenges](https://github.com/profgreatwonder/covid_19_analysis/blob/master/README.md#challenges)
+- [Recommendations](https://github.com/profgreatwonder/covid_19_analysis/blob/master/README.md#recommendations)
 
 ## Problem Statement
 
@@ -22,7 +22,7 @@ Understanding Covid-19 and its Prevailing Factors Between 2020 to 2024.
 
 The goal for this project is to understand the factors that increased or reduced the spread of covid-19 for different countries and continents between 2020 and 2024.
 
-### Question
+#### Questions
 
 The questions below will enable us achieve the project goal and inform how to formulate the queries
 
@@ -43,12 +43,14 @@ The questions below will enable us achieve the project goal and inform how to fo
 
 ## Project and Dataset Description
 
-### Links to Files and Visualization
+## Links to Files and Visualization
 
-- [Original Dataset](<(https://github.com/owid/covid-19-data/blob/master/public/data/README.md)>)
-- [Setup File]()
-- [Exploratory Data File]()
-- [Export Views File]()
+- [Original Dataset](https://github.com/owid/covid-19-data/blob/master/public/data/README.md)
+- [Split Dataset Folder](https://github.com/profgreatwonder/covid_19_analysis/tree/master/corona_dataset)
+- [Setup File](https://github.com/profgreatwonder/covid_19_analysis/blob/master/setup_01.sql)
+- [Exploratory Data File](https://github.com/profgreatwonder/covid_19_analysis/blob/master/eda_02.sql)
+- [Export Views File](https://github.com/profgreatwonder/covid_19_analysis/blob/master/query_exports_03.sql)
+- [Exported Views for Visualization Folder](https://github.com/profgreatwonder/covid_19_analysis/tree/master/tables_from_sql_eda)
 
 ## Project Todos
 
@@ -56,13 +58,13 @@ The questions below will enable us achieve the project goal and inform how to fo
 
 exporting all tables out to a csv file for visualization in tableau
 
-## Software and Tools
+## Software and Tools Used
 
-- Excel: used to split the dataset in 3 and some data cleaning such as replacing null values in numerical columns with 0s.
-- MySQL Workbench: used to write the queries
-- Tableau: used for visualization
-- VSCODE: used to work with github and do the readme
-- Git/Github: used for version control
+- **Excel:** used to split the dataset in 3 and some data cleaning such as replacing null values in numerical columns with 0s.
+- **MySQL Workbench:** used to write the queries
+- **Tableau:** used for visualization
+- **VSCODE:** used to work with github and do the readme
+- **Git/Github:** used for version control
 
 ## Queries Used
 
