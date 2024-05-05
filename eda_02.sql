@@ -34,9 +34,10 @@ CREATE VIEW
 	infection_death_rate 
 AS
 SELECT 
-	ROW_NUMBER() OVER (ORDER BY location) AS infection_death_rate_id, 
+	ROW_NUMBER() OVER (ORDER BY continent) AS infection_death_rate_id, 
+    cd.`date`,
 	cd.location, 
-    cd.continent, 
+    cd.continent,
     SUM(cd.total_cases) as total_cases, 
     SUM(cd.total_deaths) as total_deaths, 
     SUM(pi.population) as total_population,
@@ -57,7 +58,7 @@ AND
 AND 
 	cd.continent NOT IN ('')
 GROUP BY 
-	cd.location, cd.continent
+	cd.`date`, cd.location, cd.continent
 ORDER BY
 	infection_rate DESC;
     
@@ -84,7 +85,6 @@ GROUP BY
 	location
 ORDER BY
 	max_infection_rate DESC;
-select * from min_max_location_view;
     
 
 -- 3. the continent with the lowest and highest infection and death rate
@@ -113,15 +113,14 @@ ORDER BY
 
 /*
 4. comparing infection rate with the factors below by location
-	a. stringency index
-	b. population density
-	c. population older than 65 years
-	d. population older than 70 years
-	e. handwashing facilities
-	f. cardiovasc_death_rate
-	g. human_development_index
-	h. life_expectancy
-	i. full vaccination
+   - stringency index
+   - population density
+   - population older than 70 years
+   - handwashing facilities
+   - cardiovasc death rate
+   - human development index
+   - life expectancy
+   - full vaccination
 */
 DROP VIEW IF EXISTS factors_by_location_view;
 CREATE VIEW 
@@ -130,20 +129,15 @@ AS
 SELECT 
 	ROW_NUMBER() OVER (ORDER BY location) AS factors_by_location_view_id,
     cd.location, 
-    SUM(cd.total_cases) as total_cases, 
 	(SUM(cd.total_cases) / SUM(pi.population)) * 100 AS infection_rate,
-	SUM(cd.total_deaths) as total_deaths, 
 	(SUM(cd.total_deaths) / SUM(pi.population)) * 100 AS death_rate,
-    SUM(pi.population) as total_population,
-    SUM(pi.stringency_index) AS sum_stringency_index, 
-    SUM(pi.population_density) AS sum_population_density, 
-    SUM(pi.aged_70_older) AS sum_aged_70_older, 
-    SUM(pi.handwashing_facilities) AS sum_handwashing_facilities, 
-    SUM(pi.cardiovasc_death_rate) AS sum_cardiovasc_death_rate, 
-    SUM(pi.human_development_index) AS sum_human_development_index, 
-    SUM(pi.life_expectancy) AS sum_life_expectancy, 
-    SUM(cv.people_fully_vaccinated) AS sum_people_fully_vaccinated, 
-    SUM(cv.total_vaccinations) AS sum_total_vaccinations,
+    AVG(pi.stringency_index) AS avg_stringency_index, 
+    AVG(pi.population_density) AS avg_population_density,
+    AVG(pi.cardiovasc_death_rate) AS avg_cardiovasc_death_rate,
+    AVG(pi.aged_70_older) AS avg_aged_70_older, 
+    AVG(pi.handwashing_facilities) AS avg_handwashing_facilities, 
+    AVG(pi.human_development_index) AS avg_human_development_index, 
+    AVG(pi.life_expectancy) AS avg_life_expectancy, 
     (SUM(cv.people_fully_vaccinated) / SUM(cv.total_vaccinations)) * 100 AS full_vaccination_rate
 FROM 
 	covid_deaths AS cd
@@ -167,16 +161,15 @@ ORDER BY
 	infection_rate DESC;
     
 /*
-5. comparing infection rate with the factors below by continent
-	a. stringency index
-	b. population density
-	c. population older than 65 years
-	d. population older than 70 years
-	e. handwashing facilities
-	f. cardiovasc_death_rate
-	g. human_development_index
-	h. life_expectancy
-	i. full vaccination
+5. comparing death and infection rate with the factors below by continent
+   - stringency index
+   - population density
+   - population older than 70 years
+   - handwashing facilities
+   - cardiovasc death rate
+   - human development index
+   - life expectancy
+   - full vaccination
 */
 
 DROP VIEW IF EXISTS factors_by_continent_view;
@@ -187,20 +180,15 @@ SELECT
 	ROW_NUMBER() OVER (ORDER BY continent) AS factors_by_continent_view_id,
     cd.continent, 
     COUNT(DISTINCT cd.location) as country_count,
-	SUM(cd.total_cases) as total_cases, 
 	(SUM(cd.total_cases) / SUM(pi.population)) * 100 AS infection_rate,
-	SUM(cd.total_deaths) as total_deaths, 
 	(SUM(cd.total_deaths) / SUM(pi.population)) * 100 AS death_rate,
-	SUM(pi.population) as total_population,
-    SUM(pi.stringency_index) AS sum_stringency_index, 
-    SUM(pi.population_density) AS sum_population_density, 
-    SUM(pi.aged_70_older) AS sum_aged_70_older, 
-    SUM(pi.handwashing_facilities) AS sum_handwashing_facilities, 
-    SUM(pi.cardiovasc_death_rate) AS sum_cardiovasc_death_rate, 
-    SUM(pi.human_development_index) AS sum_human_development_index, 
-    SUM(pi.life_expectancy) AS sum_life_expectancy, 
-    SUM(cv.people_fully_vaccinated) AS sum_people_fully_vaccinated, 
-    SUM(cv.total_vaccinations) AS sum_total_vaccinations,
+    AVG(pi.stringency_index) AS avg_stringency_index, 
+    AVG(pi.population_density) AS avg_population_density,
+    AVG(pi.cardiovasc_death_rate) AS avg_cardiovasc_death_rate,
+    AVG(pi.aged_70_older) AS avg_aged_70_older, 
+    AVG(pi.handwashing_facilities) AS avg_handwashing_facilities, 
+    AVG(pi.human_development_index) AS avg_human_development_index, 
+    AVG(pi.life_expectancy) AS avg_life_expectancy, 
     (SUM(cv.people_fully_vaccinated) / SUM(cv.total_vaccinations)) * 100 AS full_vaccination_rate
 FROM 
 	covid_deaths AS cd
