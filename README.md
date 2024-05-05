@@ -70,7 +70,7 @@ The csv version of the full dataset was downloaded and split into 3 csv files - 
 
 Below are the list of tables and their corresponding columns.
 
-1. **covid_deaths:** This dataset contains data about the covid deaths. It has the following:
+1. **covid_deaths:** This dataset contains data about the covid cases and deaths. It has the following:
 
    - `covid_deaths_id` unique identifier for the table
    - `continent` continent of the geographical location
@@ -128,9 +128,9 @@ Below are the list of tables and their corresponding columns.
 
 #### Views from EDA Dataset Description
 
-Exploratory Data Analysis (EDA) was then carried out on these tables and 5 new set of tables (views) were created - `infection_death_rate`, `min_max_location_view`, `min_max_continent_view`, `factors_by_location_view`, and `factors_by_continent_view`.
+Exploratory Data Analysis (EDA) was then carried out on these tables and 5 new set of tables (views - A view is a table gotten from the result of a SQL statement) were created - `infection_death_rate`, `min_max_location_view`, `min_max_continent_view`, `factors_by_location_view`, and `factors_by_continent_view`.
 
-1. **infection_death_rate:** this table contains information about the total infection and death including their rate. The table was created by joining parts of `covid_deaths` and `population_info` table. The goal of this table was to give an insight into the global numbers.
+1. **infection_death_rate:** this table contains information about the total infection and death including their rate. The table was created by joining parts of `covid_deaths` and `population_info` table. The goal of this table was to give an insight into the global numbers. The csv file can be found at the link - [infection_death_rate](https://github.com/profgreatwonder/covid_19_analysis/blob/master/tables_from_sql_eda/infection_death_rate.csv)
 
    - `infection_death_rate_id` unique identifier for the table
    - `date` date of the sum of observation per country
@@ -144,21 +144,21 @@ Exploratory Data Analysis (EDA) was then carried out on these tables and 5 new s
    - `infected_population` sum of population minus the sum of total_cases
    - `dead_population_no` sum of population minus the sum of total_deaths
 
-2. **min_max_location_view:** the purpose of this table is to provides us with an insight into the `maximum` and `minimum` infection and death rate of all the countries provided in the dataset. This view was created from the `infection` and `death` columns of the `infection_death_rate` view.
+2. **min_max_location_view:** the purpose of this table is to provides us with an insight into the `maximum` and `minimum` infection and death rate of all the countries provided in the dataset. This view was created from the `infection` and `death` columns of the `infection_death_rate` view. The csv file can be found at the link - [min_max_location_view](https://github.com/profgreatwonder/covid_19_analysis/blob/master/tables_from_sql_eda/min_max_location_view.csv)
 
    - `min_infection_rate` the lowest infection rate by country
    - `max_infection_rate` the highest infection rate by country
    - `min_death_rate` the lowest death rate by country
    - `max_death_rate` the highest death rate by country
 
-3. **min_max_continent_view:** just like the previous view/table, this view provides us with an insight into the `maximum` and `minimum` infection and death rate but this time, its for all the continents provided in the dataset. It was also created from the `infection` and `death` columns of the `infection_death_rate` view.
+3. **min_max_continent_view:** just like the previous view/table, this view provides us with an insight into the `maximum` and `minimum` infection and death rate but this time, its for all the continents provided in the dataset. It was also created from the `infection` and `death` columns of the `infection_death_rate` view. The csv file can be found at the link - [min_max_continent_view](https://github.com/profgreatwonder/covid_19_analysis/blob/master/tables_from_sql_eda/min_max_continent_view.csv)
 
    - `min_infection_rate` the lowest infection rate by continent
    - `max_infection_rate` the highest infection rate by continent
    - `min_death_rate` the lowest death rate by continent
    - `max_death_rate` the highest death rate by continent
 
-4. **factors_by_location_view:** this is a major view/table in understanding the prevailing factors surrounding covid-19 between 2020 to 2024 by country. This table was created from the join between some columns from `covid_deaths`, `population_info`, and `covid_vaccinations`.
+4. **factors_by_location_view:** this is a major view/table in understanding the prevailing factors surrounding covid-19 between 2020 to 2024 by country. This table was created from the join between some columns from `covid_deaths`, `population_info`, and `covid_vaccinations`. The csv file can be found at the link - [factors_by_location_view](https://github.com/profgreatwonder/covid_19_analysis/blob/master/tables_from_sql_eda/factors_by_location_view.csv)
 
    - `factors_by_location_view_id` unique identifier for the table
    - `location` geographical location
@@ -173,7 +173,7 @@ Exploratory Data Analysis (EDA) was then carried out on these tables and 5 new s
    - `avg_life_expectancy` average of all life_expectancy provided in the dataset by location
    - `full_vaccination_rate` average of all people_fully_vaccinated provided in the dataset by location
 
-5. **factors_by_continent_view:** this view/table does exactly the same as the previous view/table but this time, it gives info on the prevailing factors by continents
+5. **factors_by_continent_view:** this view/table does exactly the same as the previous view/table but this time, it gives info on the prevailing factors by continents. The csv file can be found at the link - [factors_by_continent_view](https://github.com/profgreatwonder/covid_19_analysis/blob/master/tables_from_sql_eda/factors_by_continent_view.csv)
 
    - `factors_by_location_view_id` unique identifier for the table
    - `location` geographical location
@@ -241,16 +241,6 @@ Exploratory Data Analysis (EDA) was then carried out on these tables and 5 new s
    - human_development_index
    - life_expectancy
    - full vaccination
-
-## Views Produced from Queries For Visualization
-
-A view is a table gotten from the result of a SQL statement. They are also known as virtual tables. The list below are names of the csv files exported from the views created from queries made during the analysis.
-
-1. [infection_death_rate](https://github.com/profgreatwonder/covid_19_analysis/blob/master/tables_from_sql_eda/infection_death_rate.csv)
-2. [min_max_location_view](https://github.com/profgreatwonder/covid_19_analysis/blob/master/tables_from_sql_eda/min_max_location_view.csv)
-3. [min_max_continent_view](https://github.com/profgreatwonder/covid_19_analysis/blob/master/tables_from_sql_eda/min_max_continent_view.csv)
-4. [factors_by_location_view](https://github.com/profgreatwonder/covid_19_analysis/blob/master/tables_from_sql_eda/factors_by_location_view.csv)
-5. [factors_by_continent_view](https://github.com/profgreatwonder/covid_19_analysis/blob/master/tables_from_sql_eda/factors_by_continent_view.csv)
 
 ## Observations
 
