@@ -52,9 +52,9 @@ The exported table was then imported into tableau and visualizations created. Th
 
 3. **Map Viz:** This dashboard visualizes the `Location`, `Max Death Rate`, `Max Infected Rate`, `Infected Population`, `Total Deaths`, `Death Rate`, and `Avg. Infection Rate`. Below is the list of how to interact with this dashboard to show the different data vizualizations
 
-- **on hover:** hovering over a country/location shows `Location`, `Max Death Rate`, `Max Infected Rate`, `Infected Population`, `Total Deaths`
+   - **on hover:** hovering over a country/location shows `Location`, `Max Death Rate`, `Max Infected Rate`, `Infected Population`, `Total Deaths`
 
-- **on click:** clicking on a country/location displays a bar chart below the map, showing `Death Rate`, and `Avg. Infection Rate`
+   - **on click:** clicking on a country/location displays a bar chart below the map, showing `Death Rate`, and `Avg. Infection Rate`
 
 4. **Cases by Year by Country:** This dashboard visualizes `Total Cases` and `Total Deaths` by `country` or `location` and `date(year)` using line charts. A filter is added to this chart in order to keep things neat. Depending on the country (ies) selected, a line chart or series of line charts is displayed with the `Total Cases` and `Total Deaths` by `country` or `location` and `date(year)` for that country or set of countries.
 
